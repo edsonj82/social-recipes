@@ -9,7 +9,7 @@ feature 'User create recipes' do
             typeFood: 'Comida Mineira',
             numberPeopleServe: '5',
             preparationTime: '90',
-            level: 'Medio',
+            level: 'Médio',
             ingredients: '1 kg feijão roxinho,
               500 gr farinha de mandioca crua, 10 unidades de ovo,
               1 unidade de cebola, 2 colheres (sopa) de tempero alho e sal,

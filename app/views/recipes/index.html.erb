@@ -1,0 +1,28 @@
+<h1>Rede Social de Receitas</h1>
+<% @recipes.each do |recipe| %>
+<dl>
+  <dt>Nome da Receita</dt>
+  <dd><%= recipe.name %></dd>
+
+  <dt>Cozinha</dt>
+  <dd><%= recipe.kitchen %></dd>
+
+  <dt>Tipo de Comida</dt>
+  <dd><%= recipe.typeFood %></dd>
+
+  <dt>Quantas pessoas servem</dt>
+  <dd><%= recipe.numberPeopleServe %></dd>
+
+  <dt>Tempo de Preparo</dt>
+  <dd><%= recipe.preparationTime %></dd>
+
+  <dt>Nivel de Dificuldade</dt>
+  <dd><%= recipe.level %></dd>
+
+  <dt>Ingredientes</dt>
+  <dd><%= recipe.ingredients %></dd>
+
+  <dt>Passo a passo</dt>
+  <dd><%= recipe.steps %></dd>
+</dl>
+<% end %>
