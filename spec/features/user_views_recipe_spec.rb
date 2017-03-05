@@ -3,9 +3,14 @@ require 'rails_helper'
 feature 'Visitor views recipes on home page' do
     # setup
     scenario 'sucessfully' do
+        kitchen = Kitchen.create(
+            name: 'Brasileira'
+        )
+
         recipe = Recipe.create(
             name: 'Feijao Tropeiro',
-            kitchen: 'Brasileira',
+            # kitchen: 'Brasileira',
+            kitchen: kitchen,
             typeFood: 'Comida Mineira',
             numberPeopleServe: '5',
             preparationTime: '90',
@@ -29,7 +34,7 @@ feature 'Visitor views recipes on home page' do
 
         # expected
         expect(page).to have_content(recipe.name)
-        expect(page).to have_content(recipe.kitchen)
+        expect(page).to have_content(kitchen.name)
         expect(page).to have_content(recipe.typeFood)
         expect(page).to have_content(recipe.numberPeopleServe)
         expect(page).to have_content(recipe.preparationTime)
@@ -39,9 +44,14 @@ feature 'Visitor views recipes on home page' do
     end
 
     scenario 'and view a list of recipes' do
+        kitchen = Kitchen.create(
+            name: 'Americana'
+        )
+
         recipe = Recipe.create(
             name: 'Panqueca grossa',
-            kitchen: 'Americana',
+            # kitchen: 'Americana',
+            kitchen: kitchen,
             typeFood: 'Cafe da Manha',
             numberPeopleServe: '12',
             preparationTime: '60',
@@ -56,9 +66,14 @@ feature 'Visitor views recipes on home page' do
               Sirva com mel.'
         )
 
+        another_kitchen = Kitchen.create(
+            name: 'Italiana'
+        )
+
         another_recipe = Recipe.create(
             name: 'Nhoque Simples',
-            kitchen: 'Italiana',
+            # kitchen: 'Italiana',
+            kitchen: another_kitchen,
             typeFood: 'Comida Italiana',
             numberPeopleServe: '4',
             preparationTime: '120',
@@ -92,7 +107,7 @@ feature 'Visitor views recipes on home page' do
 
         # expected - recipe
         expect(page).to have_content(recipe.name)
-        expect(page).to have_content(recipe.kitchen)
+        expect(page).to have_content(kitchen.name)
         expect(page).to have_content(recipe.typeFood)
         expect(page).to have_content(recipe.numberPeopleServe)
         expect(page).to have_content(recipe.preparationTime)
@@ -101,7 +116,7 @@ feature 'Visitor views recipes on home page' do
         expect(page).to have_content(recipe.steps)
         # expected - another_recipe
         expect(page).to have_content(another_recipe.name)
-        expect(page).to have_content(another_recipe.kitchen)
+        expect(page).to have_content(another_kitchen.name)
         expect(page).to have_content(another_recipe.typeFood)
         expect(page).to have_content(another_recipe.numberPeopleServe)
         expect(page).to have_content(another_recipe.preparationTime)

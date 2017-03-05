@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302225120) do
+ActiveRecord::Schema.define(version: 20170305000158) do
+
+  create_table "kitchens", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "recipes", force: :cascade do |t|
     t.string   "name"
-    t.string   "kitchen"
     t.string   "typeFood"
     t.string   "numberPeopleServe"
     t.string   "preparationTime"
@@ -23,6 +28,8 @@ ActiveRecord::Schema.define(version: 20170302225120) do
     t.string   "steps"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "kitchen_id"
+    t.index ["kitchen_id"], name: "index_recipes_on_kitchen_id"
   end
 
 end

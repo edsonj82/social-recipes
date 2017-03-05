@@ -3,9 +3,13 @@ require 'rails_helper'
 feature 'User create recipes' do
     scenario 'successfully' do
         # setup
+        kitchen = Kitchen.create(
+            name: 'Brasileira'
+        )
+
         recipe = Recipe.new(
             name: 'Feijao Tropeiro',
-            kitchen: 'Brasileira',
+            # kitchen: 'Brasileira',
             typeFood: 'Comida Mineira',
             numberPeopleServe: '5',
             preparationTime: '90',
@@ -28,7 +32,8 @@ feature 'User create recipes' do
         visit new_recipe_path
 
         fill_in 'Nome da Receita',        with: recipe.name
-        fill_in 'Cozinha',                with: recipe.kitchen
+        # fill_in 'Cozinha',                with: recipe.kitchen
+        select kitchen.name,              from: 'Cozinha'
         fill_in 'Tipo de Comida',         with: recipe.typeFood
         fill_in 'Quantas pessoas servem', with: recipe.numberPeopleServe
         fill_in 'Tempo de Preparo',       with: recipe.preparationTime
@@ -40,7 +45,8 @@ feature 'User create recipes' do
 
         # expected
         expect(page).to have_content(recipe.name)
-        expect(page).to have_content(recipe.kitchen)
+        # expect(page).to have_content(recipe.kitchen)
+        expect(page).to have_content(kitchen.name)
         expect(page).to have_content(recipe.typeFood)
         expect(page).to have_content(recipe.numberPeopleServe)
         expect(page).to have_content(recipe.preparationTime)
