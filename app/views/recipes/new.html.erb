@@ -1,29 +1,33 @@
-<%= form_for @recipe do |f| %>
-<dl>
-  <dt><%= f.label :name, 'Nome da Receita' %></dt>
-  <dd><%= f.text_field :name %></dd>
 
-  <dt><%= f.label :kitchen_id, 'Cozinha' %></dt>
-  <!--<dd><%= f.text_field :kitchen %></dd>-->
-    <%= f.collection_select(:kitchen_id, @kitchens, :id, :name) %>
+<%= form_for @recipe, html: { multipart: true } do |f| %>
+  <%= f.label :picture, 'Imagem' %>
+  <%= f.file_field :picture %>
+  <dl>
+    <dt><%= f.label :name, 'Nome da Receita' %></dt>
+    <dd><%= f.text_field :name %></dd>
 
-  <dt><%= f.label :typeFood, 'Tipo de Comida' %></dt>
-  <dd><%= f.text_field :typeFood %></dd>
+    <dt><%= f.label :kitchen_id, 'Cozinha' %></dt>
+    <dd>  <%= f.collection_select(:kitchen_id, @kitchens, :id, :name) %></dd>
 
-  <dt><%= f.label :numberPeopleServe, 'Quantas pessoas servem' %></dt>
-  <dd><%= f.text_field :numberPeopleServe %></dd>
+    <dt><%= f.label :typeFood, 'Tipo de Comida' %></dt>
+    <dd><%= f.text_field :typeFood %></dd>
 
-  <dt><%= f.label :preparationTime, 'Tempo de Preparo' %></dt>
-  <dd><%= f.text_field :preparationTime %></dd>
+    <dt><%= f.label :numberPeopleServe, 'Quantas pessoas servem' %></dt>
+    <dd><%= f.text_field :numberPeopleServe %></dd>
 
-  <dt><%= f.label :level, 'Nivel de Dificuldade' %></dt>
-  <dd><%= f.text_field :level %></dd>
+    <dt><%= f.label :preparationTime, 'Tempo de Preparo' %></dt>
+    <dd><%= f.text_field :preparationTime %></dd>
 
-  <dt><%= f.label :ingredients, 'Ingredientes' %></dt>
-  <dd><%= f.text_field :ingredients %> </dd>
+    <dt><%= f.label :level, 'Nivel de Dificuldade' %></dt>
+    <dd><%= f.text_field :level %></dd>
 
-  <dt><%= f.label :steps, 'Passo a passo' %></dt>
-  <dd><%= f.text_field :steps %></dd>
-</dl>
-<%= f.submit 'Criar Receita' %>
-<% end %>
+    <dt><%= f.label :ingredients, 'Ingredientes' %></dt>
+    <dd><%= f.text_field :ingredients %> </dd>
+
+    <dt><%= f.label :steps, 'Passo a passo' %></dt>
+    <dd><%= f.text_field :steps %></dd>
+<!--<%= image_tag 'Feijao_tropeiro_mineiraaa.png' %>-->
+  </dl>
+
+  <%= f.submit 'Criar Receita' %>
+  <% end %>

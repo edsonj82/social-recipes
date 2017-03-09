@@ -34,6 +34,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use CarrierWare to upload files for deployment.
+gem 'paperclip', '~> 5.0.0'
+
 group :development, :test do
     gem 'rspec-rails', '~> 3.5'
     gem 'capybara'
@@ -46,6 +49,8 @@ group :development do
     # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
     gem 'spring'
     gem 'spring-watcher-listen', '~> 2.0.0'
+    # Use CarrierWare to upload files for deployment.
+    # gem 'carrierwave', '~> 1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

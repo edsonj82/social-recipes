@@ -1,15 +1,14 @@
 require 'rails_helper'
 
-feature 'User create recipes' do
+feature 'User send picture recipe ' do
     scenario 'successfully' do
-        # setup
         kitchen = Kitchen.create(
             name: 'Brasileira'
         )
 
-        recipe = Recipe.new(
+        recipe = Recipe.create(
             name: 'Feijao Tropeiro',
-            # kitchen: 'Brasileira',
+            kitchen: kitchen,
             typeFood: 'Comida Mineira',
             numberPeopleServe: '5',
             preparationTime: '90',
@@ -30,9 +29,7 @@ feature 'User create recipes' do
         )
         # activity
         visit new_recipe_path
-
         fill_in 'Nome da Receita',        with: recipe.name
-        # fill_in 'Cozinha',                with: recipe.kitchen
         select kitchen.name,              from: 'Cozinha'
         fill_in 'Tipo de Comida',         with: recipe.typeFood
         fill_in 'Quantas pessoas servem', with: recipe.numberPeopleServe
@@ -40,10 +37,13 @@ feature 'User create recipes' do
         fill_in 'Nivel de Dificuldade',   with: recipe.level
         fill_in 'Ingredientes',           with: recipe.ingredients
         fill_in 'Passo a passo',          with: recipe.steps
+        # attach_file('Picture', '')
 
         click_on 'Criar Receita'
 
         # expected
+        expect(page).not_to have_xpath("//img[contains(@src,'Feijao_tropeiro_mineiraaa')]")
+        # expect(page).to have_content('FileNotFound')
         expect(page).to have_content(recipe.name)
         expect(page).to have_content(kitchen.name)
         expect(page).to have_content(recipe.typeFood)

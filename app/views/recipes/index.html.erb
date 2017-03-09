@@ -1,5 +1,7 @@
 <h1>Rede Social de Receitas</h1>
+
 <% @recipes.each do |recipe| %>
+<!--<%= image_tag 'Feijao_tropeiro_mineiraaa.png' %>-->
   <dl>
     <dt>Nome da Receita</dt>
     <dd><%= recipe.name %></dd>
@@ -25,4 +27,8 @@
     <dt>Passo a passo</dt>
     <dd><%= recipe.steps %></dd>
   </dl>
+<% end %>
+
+<%= @kitchens.each do |kitchen| %>
+  <%= kitchen.name %>
 <% end %>

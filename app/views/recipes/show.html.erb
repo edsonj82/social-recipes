@@ -1,10 +1,11 @@
 <div>
-  <%= @recipe.name %><br>
-  <%= @recipe.kitchen.name %><br>
-  <%= @recipe.typeFood %><br>
-  <%= @recipe.numberPeopleServe %><br>
-  <%= @recipe.preparationTime %><br>
-  <%= @recipe.level %><br>
-  <%= @recipe.ingredients %><br>
-  <%= @recipe.steps %>
+  <%= image_tag @recipe.picture.url(:thumb) %><br>
+  Nome da Receita: <%= @recipe.name %><br>
+  Cozinha: <%= @recipe.kitchen.name %><br>
+  Tipo de Comida: <%= @recipe.typeFood %><br>
+  Quantas pessoas servem: <%= @recipe.numberPeopleServe %><br>
+  Tempo de Preparo: <%= @recipe.preparationTime %><br>
+  Nivel de Dificuldade: <%= @recipe.level %><br>
+  Ingredientes: <%= @recipe.ingredients %><br>
+  Passo a passo:<%= @recipe.steps %>
 </div>

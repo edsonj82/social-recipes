@@ -16,14 +16,15 @@ class RecipesController < ApplicationController
 
     def index
         @recipes = Recipe.all
+        @kitchens = Kitchen.all
     end
 
     private
 
     def recipe_params
         params.require(:recipe).permit(
-            :name, :kitchen_id, :typeFood, :numberPeopleServe, :preparationTime,
-            :level, :ingredients, :steps
+            :name, :kitchen_id, :typeFood, :numberPeopleServe,
+            :preparationTime, :level, :ingredients, :steps, :picture
         )
     end
 end
