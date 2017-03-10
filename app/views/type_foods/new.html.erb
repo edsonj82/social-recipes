@@ -1,0 +1,8 @@
+<h2>Tipo de Comida</h2>
+<%= form_for @type_food do |f| %>
+<dl>
+  <dt><%= f.label :name, 'Tipo de Comida'%></dt>
+  <dd><%= f.text_field :name %></dd>
+</dl>
+<%= f.submit 'Criar Tipo Comida' %>
+<% end %>
