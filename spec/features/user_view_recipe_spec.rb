@@ -3,15 +3,14 @@ require 'rails_helper'
 feature 'Visitor views recipes on home page' do
     # setup
     scenario 'sucessfully' do
-        kitchen = Kitchen.create(
-            name: 'Brasileira'
-        )
+        kitchen = Kitchen.create(name: 'Brasileira')
+
+        type_food = TypeFood.create(name: 'Comida Mineira')
 
         recipe = Recipe.create(
             name: 'Feijao Tropeiro',
-            # kitchen: 'Brasileira',
             kitchen: kitchen,
-            typeFood: 'Comida Mineira',
+            type_food: type_food,
             numberPeopleServe: '5',
             preparationTime: '90',
             level: 'Médio',
@@ -35,7 +34,7 @@ feature 'Visitor views recipes on home page' do
         # expected
         expect(page).to have_content(recipe.name)
         expect(page).to have_content(kitchen.name)
-        expect(page).to have_content(recipe.typeFood)
+        expect(page).to have_content(type_food.name)
         expect(page).to have_content(recipe.numberPeopleServe)
         expect(page).to have_content(recipe.preparationTime)
         expect(page).to have_content(recipe.level)
@@ -44,15 +43,14 @@ feature 'Visitor views recipes on home page' do
     end
 
     scenario 'and view a list of recipes' do
-        kitchen = Kitchen.create(
-            name: 'Americana'
-        )
+        kitchen = Kitchen.create(name: 'Americana')
+
+        type_food = TypeFood.create(name: 'Cafe da Manha')
 
         recipe = Recipe.create(
             name: 'Panqueca grossa',
-            # kitchen: 'Americana',
             kitchen: kitchen,
-            typeFood: 'Cafe da Manha',
+            type_food: type_food,
             numberPeopleServe: '12',
             preparationTime: '60',
             level: 'Fácil',
@@ -66,15 +64,15 @@ feature 'Visitor views recipes on home page' do
               Sirva com mel.'
         )
 
-        another_kitchen = Kitchen.create(
-            name: 'Italiana'
-        )
+        another_kitchen = Kitchen.create(name: 'Italiana')
+
+        another_type_food = TypeFood.create(name: 'Comida Italiana')
 
         another_recipe = Recipe.create(
             name: 'Nhoque Simples',
-            # kitchen: 'Italiana',
+
             kitchen: another_kitchen,
-            typeFood: 'Comida Italiana',
+            type_food: type_food,
             numberPeopleServe: '4',
             preparationTime: '120',
             level: 'Difícil',
@@ -108,7 +106,7 @@ feature 'Visitor views recipes on home page' do
         # expected - recipe
         expect(page).to have_content(recipe.name)
         expect(page).to have_content(kitchen.name)
-        expect(page).to have_content(recipe.typeFood)
+        expect(page).to have_content(type_food.name)
         expect(page).to have_content(recipe.numberPeopleServe)
         expect(page).to have_content(recipe.preparationTime)
         expect(page).to have_content(recipe.level)
@@ -117,7 +115,7 @@ feature 'Visitor views recipes on home page' do
         # expected - another_recipe
         expect(page).to have_content(another_recipe.name)
         expect(page).to have_content(another_kitchen.name)
-        expect(page).to have_content(another_recipe.typeFood)
+        expect(page).to have_content(another_type_food.name)
         expect(page).to have_content(another_recipe.numberPeopleServe)
         expect(page).to have_content(another_recipe.preparationTime)
         expect(page).to have_content(another_recipe.level)

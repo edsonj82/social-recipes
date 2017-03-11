@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.5'
 # Use CarrierWare to upload files for deployment.
 gem 'paperclip', '~> 5.0.0'
 
+gem 'factory_girl_rails', '~> 4.0'
+
 group :development, :test do
     gem 'rspec-rails', '~> 3.5'
     gem 'capybara'

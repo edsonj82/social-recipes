@@ -10,7 +10,7 @@
     <dd><%= recipe.kitchen.name %></dd>
 
     <dt>Tipo de Comida</dt>
-    <dd><%= recipe.typeFood %></dd>
+    <dd><%= recipe.type_food.name %></dd>
 
     <dt>Quantas pessoas servem</dt>
     <dd><%= recipe.numberPeopleServe %></dd>
@@ -31,4 +31,8 @@
 
 <%= @kitchens.each do |kitchen| %>
   <%= kitchen.name %>
+<% end %>
+
+<%= @type_foods.each do |type_food| %>
+  <%= type_food.name %>
 <% end %>

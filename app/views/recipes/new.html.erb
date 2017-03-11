@@ -9,8 +9,8 @@
     <dt><%= f.label :kitchen_id, 'Cozinha' %></dt>
     <dd>  <%= f.collection_select(:kitchen_id, @kitchens, :id, :name) %></dd>
 
-    <dt><%= f.label :typeFood, 'Tipo de Comida' %></dt>
-    <dd><%= f.text_field :typeFood %></dd>
+    <dt><%= f.label :type_food_id, 'Tipo de Comida' %></dt>
+    <dd>  <%= f.collection_select(:type_food_id, @type_foods, :id, :name) %></dd>
 
     <dt><%= f.label :numberPeopleServe, 'Quantas pessoas servem' %></dt>
     <dd><%= f.text_field :numberPeopleServe %></dd>

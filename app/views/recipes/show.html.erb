@@ -2,7 +2,7 @@
   <%= image_tag @recipe.picture.url(:thumb) %><br>
   Nome da Receita: <%= @recipe.name %><br>
   Cozinha: <%= @recipe.kitchen.name %><br>
-  Tipo de Comida: <%= @recipe.typeFood %><br>
+  Tipo de Comida: <%= @recipe.type_food.name %><br>
   Quantas pessoas servem: <%= @recipe.numberPeopleServe %><br>
   Tempo de Preparo: <%= @recipe.preparationTime %><br>
   Nivel de Dificuldade: <%= @recipe.level %><br>

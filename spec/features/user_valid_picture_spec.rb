@@ -2,14 +2,14 @@ require 'rails_helper'
 
 feature 'User send picture recipe ' do
     scenario 'successfully' do
-        kitchen = Kitchen.create(
-            name: 'Brasileira'
-        )
+        kitchen = Kitchen.create(name: 'Brasileira')
+
+        type_food = TypeFood.create(name: 'Comida Mineira')
 
         recipe = Recipe.create(
             name: 'Feijao Tropeiro',
             kitchen: kitchen,
-            typeFood: 'Comida Mineira',
+            type_food: type_food,
             numberPeopleServe: '5',
             preparationTime: '90',
             level: 'Médio',
@@ -31,7 +31,7 @@ feature 'User send picture recipe ' do
         visit new_recipe_path
         fill_in 'Nome da Receita',        with: recipe.name
         select kitchen.name,              from: 'Cozinha'
-        fill_in 'Tipo de Comida',         with: recipe.typeFood
+        select type_food.name,            from: 'Tipo de Comida'
         fill_in 'Quantas pessoas servem', with: recipe.numberPeopleServe
         fill_in 'Tempo de Preparo',       with: recipe.preparationTime
         fill_in 'Nivel de Dificuldade',   with: recipe.level
@@ -46,7 +46,7 @@ feature 'User send picture recipe ' do
         # expect(page).to have_content('FileNotFound')
         expect(page).to have_content(recipe.name)
         expect(page).to have_content(kitchen.name)
-        expect(page).to have_content(recipe.typeFood)
+        expect(page).to have_content(type_food.name)
         expect(page).to have_content(recipe.numberPeopleServe)
         expect(page).to have_content(recipe.preparationTime)
         expect(page).to have_content(recipe.level)
